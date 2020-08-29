@@ -1,0 +1,32 @@
+<div>
+  <table class="table table-bordered" (click)="addRow()" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Country</th>
+        <th scope="col">Capital</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let table of tables">
+        <th scope="row">{{ table.row }}</th>
+        <td>
+          <input [(ngModel)]="inputString[table.row].country" type="text" list="countries"
+            (change)="selectedCountry($event.target.value, table.row)">
+        </td>
+        <td>
+          <input [(ngModel)]="inputString[table.row].capital" type="text" list="capitals"
+            (change)="selectedCapital($event.target.value, table.row)">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <datalist id="countries">
+    <option *ngFor="let data of countryName$ | async" [value]="data.country">
+  </datalist>
+
+  <datalist id="capitals">
+    <option *ngFor="let data of countryName$ | async" [value]="data.capital">
+  </datalist>
+</div>

@@ -1,10 +1,15 @@
 <div>
-  <table class="table table-bordered" (click)="addRow()" cellspacing="0" cellpadding="0">
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-primary" id="actionDropdown" ngbDropdownToggle>Table Actions</button>
+    <div ngbDropdownMenu aria-labelledby="actionDropdown">
+      <button ngbDropdownItem (click)="addRow()">Add Row</button>
+      <button ngbDropdownItem (click)="removeRow()">Remove Row</button>
+    </div>
+  </div>
+  <table class="table table-bordered" cellspacing="0" cellpadding="0">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Country</th>
-        <th scope="col">Capital</th>
+        <th scope="col" *ngFor="let head of tableHeader">{{ head }}</th>
       </tr>
     </thead>
     <tbody>

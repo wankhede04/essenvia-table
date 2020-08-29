@@ -13,7 +13,7 @@ export class TableComponent implements OnInit {
     {row: 2},
     {row: 3},
   ];
-  public countryData: Array<string> = ['India', 'Australia', 'Japan', 'USA'];
+  public tableHeader: Array<string> = ['#', 'Country', 'Capital'];
   public inputString : any = {
     1: { country: '', capital: ''},
     2: { country: '', capital: ''},
@@ -43,5 +43,20 @@ export class TableComponent implements OnInit {
         return dataValues.capital === capital;
       })[0].country;
     });
+  }
+
+  public addRow() {
+    let lastElement;
+    for(lastElement in this.inputString);
+    this.inputString[+lastElement + 1] = { country: '', capital: ''};
+    this.tables.push({row: +lastElement + 1})
+  }
+
+  public removeRow() {
+    let lastElement;
+    for(lastElement in this.inputString);
+    if (lastElement == 1) return;
+    delete this.inputString[+lastElement];
+    this.tables.pop();
   }
 }

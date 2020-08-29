@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryCapitalService } from '../services/country-capital.service';
 import { Observable } from 'rxjs';
-import { ICountryDetails } from '../models/table.model';
 
 @Component({
   selector: 'app-table',
@@ -20,7 +19,7 @@ export class TableComponent implements OnInit {
     2: { country: '', capital: ''},
     3: { country: '', capital: ''},
   };
-  public countryName$: Observable<ICountryDetails[]>;
+  public countryName$: Observable<any>;
 
   constructor(
     private countryCapitalService: CountryCapitalService
